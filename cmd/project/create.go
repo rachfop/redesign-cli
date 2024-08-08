@@ -38,7 +38,7 @@ and configuring other project settings.`,
 }
 
 func init() {
-	NewProjectCmd.Flags().StringVarP(&projectName, "name", "n", "", "Set the project name, a directory with this name will be created in the current path")
+	NewProjectCmd.Flags().StringVarP(&projectName, "name", "n", "hello-world", "Set the project name, a directory with this name will be created in the current path")
 	NewProjectCmd.Flags().StringVarP(&modelType, "type", "t", "", "Specify the model type for the project")
 	NewProjectCmd.Flags().StringVarP(&modelName, "model", "m", "", "Specify the Hugging Face model name for the project")
 	NewProjectCmd.Flags().StringVarP(&cudaVersion, "cuda", "c", "12.5", "Specify the CUDA version for the project")

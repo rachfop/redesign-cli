@@ -19,13 +19,13 @@ var starterTemplates embed.FS
 const basePath string = "starter_templates"
 
 var (
-	focusedStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("205"))
-	blurredStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("240"))
-	cursorStyle  = focusedStyle.Copy()
-	noStyle      = lipgloss.NewStyle()
+	focusedStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#673ab7"))
+	blurredStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#673ab7"))
+	// cursorStyle  = focusedStyle.Copy()
+	noStyle = lipgloss.NewStyle()
 
-	blurredButton = lipgloss.NewStyle().Foreground(lipgloss.Color("240")).Render("[ Submit ]")
-	focusedButton = lipgloss.NewStyle().Foreground(lipgloss.Color("205")).Render("[ Submit ]")
+	blurredButton = lipgloss.NewStyle().Foreground(lipgloss.Color("#673ab7")).Render("[ Submit ]")
+	focusedButton = lipgloss.NewStyle().Foreground(lipgloss.Color("#673ab7")).Render("[ Submit ]")
 )
 
 type model struct {
@@ -41,8 +41,8 @@ func initialModel() model {
 	var t textinput.Model
 	for i := range inputs {
 		t = textinput.New()
-		t.CursorStyle = cursorStyle
-		t.CharLimit = 32
+		// t.CursorStyle = cursorStyle
+		// t.CharLimit = 32
 
 		switch i {
 		case 0:
@@ -51,14 +51,14 @@ func initialModel() model {
 			t.PromptStyle = focusedStyle
 			t.TextStyle = focusedStyle
 		case 1:
-			t.Placeholder = "Model Type (e.g., LLM, Stable_Diffusion)"
+			t.Placeholder = "Use case: Text | Embed | Image | Audio"
 			t.CharLimit = 64
 		case 2:
-			t.Placeholder = "Hugging Face Model Name (e.g., gpt2, bert)"
+			t.Placeholder = "Hugging Face Model Name: openchat/openchat-3.5-0106"
 		case 3:
-			t.Placeholder = "CUDA Version (e.g., 11.2, 11.3, 11.4)"
+			t.Placeholder = "CUDA Version: 12.5, 12.4, 12.3, 12.2, etc."
 		case 4:
-			t.Placeholder = "Python Version (e.g., 3.8, 3.9, 3.10)"
+			t.Placeholder = "Python Version: 3.11, 3.10, 3.9, 3.8"
 		}
 
 		inputs[i] = t
